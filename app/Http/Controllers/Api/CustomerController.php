@@ -17,10 +17,7 @@ class CustomerController extends Controller
         ]);
         $customer = Customer::where('email', $request->email)->first();
         if ($customer && Hash::check($request->password, $customer->password)) {
-            // Create a new token for the customer
             $token = $customer->createToken('token-name')->plainTextToken;
-
-            // Return the token in the response
             return response()->json(['token' => $token]);
         }
         return response()->json(['error' => 'Unauthorized'], 401);

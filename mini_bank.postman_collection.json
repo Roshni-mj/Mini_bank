@@ -1,0 +1,56 @@
+{
+  "info": {
+    "_postman_id": "17644bee-66f1-4288-b3c7-2d46316b0f5c",
+    "name": "mini_bank",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18664402"
+  },
+  "item": [
+    {
+      "name": "login",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://localhost:8000/api/login"
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://localhost:8000/api/logout"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transaction",
+      "item": [
+        {
+          "name": "Credit",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://127.0.0.1:8000/api/transactions/credit"
+          },
+          "response": []
+        },
+        {
+          "name": "Debit",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "http://127.0.0.1:8000/api/transactions/debit"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
