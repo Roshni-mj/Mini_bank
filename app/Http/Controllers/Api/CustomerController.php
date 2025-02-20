@@ -35,4 +35,16 @@ class CustomerController extends Controller
     public function show($id)
     {
     }
+
+    public function customerlist()
+    {
+
+        $customers = Customer::select('id', 'first_name','last_name' ,'email', 'phone')
+            ->with(['transactions' => function ($query) {
+                $query->select('type','amount','customer_id')->latest()->limit(5);
+            }])
+            ->get();
+
+        return response()->json($customers);
+    }
 }

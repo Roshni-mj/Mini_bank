@@ -6,6 +6,8 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CustomersImport;
 class CustomerController extends Controller
 {
 
@@ -15,6 +17,13 @@ class CustomerController extends Controller
         $customers = Customer::withCount('transactions')->get();
         return view('customers', compact('customers'));
     }
+
+    public function importfile()
+    {
+       
+        return view('import');
+    }
+
 
     public function dashboard()
     {
@@ -45,5 +54,16 @@ class CustomerController extends Controller
     }
     public function show($id)
     {
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv,xls|max:2048',
+        ]);
+
+        Excel::import(new CustomersImport, $request->file('file'));
+
+        return back()->with('success', 'Customers imported successfully!');
     }
 }

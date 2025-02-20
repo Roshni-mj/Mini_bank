@@ -30,6 +30,12 @@
                         <span class="nav-link-text">Customers</span>
                     </a>
                 </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Customers">
+                    <a class="nav-link" href="{{ route('import') }}">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span class="nav-link-text">Import Customers</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
